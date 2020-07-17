@@ -1,0 +1,25 @@
+package com.bholebaba.MVCSchoolApp.Controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class UserController {
+
+
+	@RequestMapping(value="/myschool",method=RequestMethod.GET)
+	public String homepage() {
+		return "welcome";
+	}
+	
+	@RequestMapping(value="/myschool/signup",method=RequestMethod.GET)
+	public String signup() {
+		return "signup";
+	}
+	
+	@RequestMapping(value="/myschool/login",method=RequestMethod.GET)
+	public String login() {
+		return "login";
+	}
+}
