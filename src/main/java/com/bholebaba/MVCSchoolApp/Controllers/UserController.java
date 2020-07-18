@@ -35,6 +35,11 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping(value="/myschool/logout",method=RequestMethod.GET)
+	public String logout(String admnnumber, String password) {
+		return "logout";
+	}
+	
 	
 	@RequestMapping(value="/myschool/signup",method=RequestMethod.POST)
 	public ModelAndView signUpUser(@ModelAttribute("students") Students students, BindingResult result) {
@@ -55,6 +60,11 @@ public class UserController {
 		} else if (student.isPresent() && password.equals(student.get().getPassword())){
 			System.out.println("Student " + admissionNumber + " is present");
 			mav.setViewName("studentdashboard");
+			mav.addObject("name", student.get().getName());
+			mav.addObject("admnnumber", student.get().getAdmnnumber());
+			mav.addObject("gender", student.get().getGender());
+			mav.addObject("address", student.get().getAddress());
+			mav.addObject("mailid", student.get().getMailid());
 		} else {
 			System.out.println("Incorrect password entered");
 			mav.setViewName("failedlogin");
